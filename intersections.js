@@ -7,12 +7,19 @@ function cmp(a, b) {
   return a[0] === b[0] && a[1] === b[1];
 }
 
-function valid(a) {
-  if (a[2][0] === 0) {
-    return false
-  }
+var pc = [0, 0];
+var pn = [0, 0];
+var oc = [0, 0];
+var on = [0, 0];
 
-  return true;
+function arrayOrObject(v, ret) {
+  if (Array.isArray(v)) {
+    ret[0] = v[0];
+    ret[1] = v[1];
+  } else {
+    ret[0] = v.x;
+    ret[1] = v.y;
+  }
 }
 
 function selfIntersections(poly) {
@@ -20,11 +27,12 @@ function selfIntersections(poly) {
   var l = poly.length;
   var isects = [];
   for (var o=0; o<l; o++) {
-    var oc = poly[o]
-    var on = poly[(o+1) % l];
+    arrayOrObject(poly[o], oc);
+    arrayOrObject(poly[(o+1) % l], on);
     for (var p=0; p<l; p++) {
-      var pc = poly[p]
-      var pn = poly[(p+1) % l];
+      arrayOrObject(poly[p], pc);
+      arrayOrObject(poly[(p+1) % l], pn);
+
       if (cmp(pc, oc) || cmp(pc, on) || cmp(pn, oc) || cmp(pn, on)) {
         continue;
       }
