@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "tape": "^4.0.0"
+  }
+}
