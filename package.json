@@ -5,5 +5,30 @@
   "dependencies": {
     "exact-segment-intersect": "^1.0.0",
     "robust-estimate-float": "^1.0.0"
-  }
+  },
+  "name": "2d-polygon-self-intersections",
+  "description": "This library may not be fast, but it is robust. Robust in the fact that it will find all of the self-intersections in a polygon - minus of course shared endpoints.",
+  "version": "0.0.0",
+  "main": "intersections.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmpvar/2d-polygon-self-intersections.git"
+  },
+  "keywords": [
+    "2d",
+    "polygon",
+    "math",
+    "intersections",
+    "self-intersections",
+    "robust"
+  ],
+  "author": "Elijah Insua <tmpvar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmpvar/2d-polygon-self-intersections/issues"
+  },
+  "homepage": "https://github.com/tmpvar/2d-polygon-self-intersections"
 }
