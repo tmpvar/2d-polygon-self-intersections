@@ -26,7 +26,7 @@ var poly = [
 
 var r = isects(poly);
 console.log(r);
-// outputs: [ [ 5, 0 ] ]
+// outputs: [ [ 5, 5 ] ]
 ```
 
 ### api
