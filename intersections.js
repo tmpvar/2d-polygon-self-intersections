@@ -42,7 +42,7 @@ function selfIntersections(poly) {
       r[1] = float(r[0]) / w;
       r.pop();
 
-      var key = r.join(',');
+      var key = r+'';
       if (!seen[key]) {
         seen[key] = true;
         isects.push(r);
