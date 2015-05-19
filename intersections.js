@@ -47,7 +47,7 @@ function selfIntersections(poly) {
 
       var w = float(r[2]);
       r[0] = float(r[0]) / w;
-      r[1] = float(r[0]) / w;
+      r[1] = float(r[1]) / w;
       r.pop();
 
       var key = r+'';
