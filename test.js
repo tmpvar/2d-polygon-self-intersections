@@ -29,7 +29,6 @@ test('interesections (hourglass)', function(t) {
   ];
 
   var r = isects(poly);
-  console.log(r);
   t.equal(r.length, 1, 'no self-intersections');
   t.deepEqual(r[0], [5, 0], 'isect at (5, 0)')
   t.end();
