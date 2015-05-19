@@ -1,5 +1,7 @@
 # 2d-polygon-self-intersections
 
+find self-intersections in a 2d polygon
+
 This library may not be fast, but it is robust. Robust in the fact that it will find all of the self-intersections in a polygon - minus of course shared endpoints.
 
 You can expect a time complexity of O(n^2)
@@ -31,7 +33,7 @@ console.log(r);
 
 __isects__(`polygon`)
 
-* `polygon` - an array of 2 component arrays (i.e. a triangle `[[0, 0], [10, 0], [10, 10]]`)
+* `polygon` - an array of 2 component arrays (i.e. a triangle `[[0, 0], [10, 0], [10, 10]]`) or an array of objects: `[{x:0, y:0}, {x:10, y:0}, {x:10, y:10}]`
 
 __returns__ an empty array if no interesections or an array of 2 component arrays representing the intersection points. 
 
