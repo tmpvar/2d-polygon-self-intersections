@@ -26,13 +26,8 @@ test('interesections (hourglass)', function(t) {
     [10, 10],
   ];
 
-  var calls = 0;
-  var r = isects(poly, function(isect, s0, e0, s1, e1, unique) {
-    calls++;
-    return unique;
-  });
+  var r = isects(poly);
 
-  t.equal(calls, 2, 'visitor called twice')
   t.equal(r.length, 1, 'no self-intersections');
   t.deepEqual(r[0], [5, 5], 'isect at (5, 0)')
   t.end();
@@ -47,8 +42,16 @@ test('interesection visitor', function(t) {
     [10, 10],
   ];
 
+  var expectedArgs = [
+    [[5, 5], 1, [10, 0], [0, 10], 3, [10, 10], [0, 0], true],
+    [[5, 5], 3, [10, 10], [0, 0], 1, [10, 0], [0, 10], false]
+  ];
+
   var calls = 0;
-  var r = isects(poly, function(isect, start0, end0, start1, end1, unique) {
+  var r = isects(poly, function(isect, i0, s0, e0, i1, s1, e1, unique) {
+    var args = [];
+    Array.prototype.push.apply(args, arguments);
+    t.deepEqual(args, expectedArgs[calls]);
     calls++;
     return true;
   });

@@ -58,7 +58,7 @@ function selfIntersections(poly, filterFn) {
 
       var collect = unique;
       if (filterFn) {
-        collect = filterFn(r, oc, on, pc, pn, unique);
+        collect = filterFn(r, o, oc, on, p, pc, pn, unique);
       }
 
       if (collect) {
