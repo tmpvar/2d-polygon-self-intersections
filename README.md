@@ -36,8 +36,10 @@ __isects__(`polygon`[, `filterFn`])
 * `polygon` - an array of 2 component arrays (i.e. a triangle `[[0, 0], [10, 0], [10, 10]]`) or an array of objects: `[{x:0, y:0}, {x:10, y:0}, {x:10, y:10}]`
 * `filterFn` - a filter function called whenever an intersection is found: `filterFn`(`isect`, `start0`, `end0`, `start1`, `end1`, `unique`)
  * `isect` - current intersection (e.g. `[5, 5]`) - mutations in this array get collected
+ * `index0` - index of the segment (e.g `1`)
  * `start0` - start of the first segment (e.g `[0, 5]`)
  * `end0` - start of the first segment (e.g `[10, 5]`)
+ * `index0` - index of the segment (e.g `3`)
  * `start1` - start of the first segment (e.g `[5, 0]`)
  * `end1` - start of the first segment (e.g `[5, 10]`)
  * `unique` - boolean representing whether or not this intersection point has been seen before
