@@ -9,7 +9,7 @@
   },
   "name": "2d-polygon-self-intersections",
   "description": "This library may not be fast, but it is robust. Robust in the fact that it will find all of the self-intersections in a polygon - minus of course shared endpoints.",
-  "version": "1.3.0",
+  "version": "1.2.1",
   "main": "intersections.js",
   "scripts": {
     "test": "tape test.js"
