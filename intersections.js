@@ -27,11 +27,15 @@ function selfIntersections(poly, filterFn) {
   var l = poly.length;
   var isects = [];
   for (var o=0; o<l; o++) {
-    arrayOrObject(poly[o], oc);
-    arrayOrObject(poly[(o+1) % l], on);
+    var s0 = poly[o];
+    var e0 = poly[(o+1) % l];
+    arrayOrObject(s0, oc);
+    arrayOrObject(e0, on);
     for (var p=0; p<l; p++) {
-      arrayOrObject(poly[p], pc);
-      arrayOrObject(poly[(p+1) % l], pn);
+      var s1 = poly[p]
+      var e1 = poly[(p+1) % l];
+      arrayOrObject(s1, pc);
+      arrayOrObject(e1, pn);
 
       if (cmp(pc, oc) || cmp(pc, on) || cmp(pn, oc) || cmp(pn, on)) {
         continue;
@@ -58,7 +62,7 @@ function selfIntersections(poly, filterFn) {
 
       var collect = unique;
       if (filterFn) {
-        collect = filterFn(r, o, oc, on, p, pc, pn, unique);
+        collect = filterFn(r, o, s0, e0, p, s1, e1, unique);
       }
 
       if (collect) {
