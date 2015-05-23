@@ -22,7 +22,7 @@ function arrayOrObject(v, ret) {
   }
 }
 
-function selfIntersections(poly) {
+function selfIntersections(poly, filterFn) {
   var seen = {};
   var l = poly.length;
   var isects = [];
@@ -51,8 +51,17 @@ function selfIntersections(poly) {
       r.pop();
 
       var key = r+'';
-      if (!seen[key]) {
+      var unique = !seen[key];
+      if (unique) {
         seen[key] = true;
+      }
+
+      var collect = unique;
+      if (filterFn) {
+        collect = filterFn(r, oc, on, pc, pn, unique);
+      }
+
+      if (collect) {
         isects.push(r);
       }
     }
