@@ -77,3 +77,46 @@ test('work with vec2', function(t) {
   t.deepEqual(r[0], [5, 5], 'isect at (5, 0)')
   t.end();
 });
+
+test('better deduping', function(t) {
+
+  var poly = [
+    [0, 0],
+    [20, 0],
+    [20, 5],
+    [20, 10],
+  ];
+
+  var r = isects(poly);
+  t.equal(r.length, 0, 'no self-intersections');
+  t.end();
+});
+
+test('separated intersections', function(t) {
+
+  /*
+           o-----o
+           |     |
+    o------x-----x------o
+    |      |     |      |
+    |      |     |      |
+    |      |     |      |
+    o------o     o------o
+  */
+
+  var poly = [
+    [-10, 0],
+    [10, 0],
+    [10, 10],
+    [1, 10],
+    [1, -1],
+    [-1, -1],
+    [-1, 10],
+    [-10, 1]
+  ];
+
+  var r = isects(poly);
+
+  t.equal(r.length, 2, 'two self-intersections');
+  t.end();
+});

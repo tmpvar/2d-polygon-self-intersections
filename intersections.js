@@ -1,5 +1,6 @@
 var isect = require('exact-segment-intersect');
 var float = require('robust-estimate-float');
+var hasIsect = require('robust-segment-intersect');
 
 module.exports = selfIntersections;
 
@@ -32,12 +33,18 @@ function selfIntersections(poly, filterFn) {
     arrayOrObject(s0, oc);
     arrayOrObject(e0, on);
     for (var p=0; p<l; p++) {
+      if (o === p) { continue; }
+
       var s1 = poly[p]
       var e1 = poly[(p+1) % l];
       arrayOrObject(s1, pc);
       arrayOrObject(e1, pn);
 
       if (cmp(pc, oc) || cmp(pc, on) || cmp(pn, oc) || cmp(pn, on)) {
+        continue;
+      }
+
+      if (!hasIsect(oc, on, pc, pn)) {
         continue;
       }
 
@@ -53,6 +60,10 @@ function selfIntersections(poly, filterFn) {
       r[0] = float(r[0]) / w;
       r[1] = float(r[1]) / w;
       r.pop();
+
+      if (cmp(r, oc) || cmp(r, on) || cmp(r, pc) || cmp(r, pn)) {
+        continue;
+      }
 
       var key = r+'';
       var unique = !seen[key];
