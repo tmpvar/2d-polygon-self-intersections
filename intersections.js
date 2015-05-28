@@ -1,6 +1,5 @@
 var isect = require('exact-segment-intersect');
 var float = require('robust-estimate-float');
-var hasIsect = require('robust-segment-intersect');
 
 module.exports = selfIntersections;
 
@@ -41,10 +40,6 @@ function selfIntersections(poly, filterFn) {
       arrayOrObject(e1, pn);
 
       if (cmp(pc, oc) || cmp(pc, on) || cmp(pn, oc) || cmp(pn, on)) {
-        continue;
-      }
-
-      if (!hasIsect(oc, on, pc, pn)) {
         continue;
       }
 
